@@ -125,7 +125,7 @@ tienda-online/
 
 ### Requisitos previos
 - Node.js 18+ y npm
-- MySQL u MariaDB 8.0 / 10.11+ **o** Docker (ver opción A abajo)
+- Una base de datos MySQL/MariaDB disponible. Elige **una** de estas tres opciones: Docker (Opción A), XAMPP (Opción B) o MySQL instalado localmente (Opción C).
 - Visual Studio Code y Git
 
 ### Opción A — Base de datos con Docker (recomendado si no tienes MySQL instalado)
@@ -147,9 +147,34 @@ cp .env.example .env
 Para verificar que el contenedor está corriendo: `docker ps` (debe aparecer `tienda_online_mysql`).
 Para detenerlo: `docker compose down` (tus datos persisten). Para borrar todo y empezar de cero: `docker compose down -v`.
 
-### Opción B — MySQL instalado localmente
+### Opción B — XAMPP (recomendado si no quieres usar la terminal para la base de datos)
 
-### Pasos (instalación de dependencias y arranque)
+[XAMPP](https://www.apachefriends.org/es/download.html) instala MySQL (como MariaDB) junto con **phpMyAdmin**, una interfaz visual para crear la base de datos sin escribir comandos.
+
+1. Descarga e instala XAMPP para Windows desde el enlace anterior (deja seleccionado al menos el componente MySQL/MariaDB durante la instalación).
+2. Abre **XAMPP Control Panel** y da clic en **Start** junto a **MySQL**. Debe quedar en verde.
+3. Da clic en **Admin** junto a MySQL — esto abre phpMyAdmin en el navegador (`http://localhost/phpmyadmin`).
+4. En phpMyAdmin, ve a la pestaña **SQL**, abre el archivo `backend/src/db/schema.sql` (con VS Code o el Bloc de notas), copia todo su contenido, pégalo en el cuadro de texto y da clic en **Continuar / Go**.
+5. Esto crea la base `tienda_online` con las tablas y los productos de ejemplo.
+6. Configura el `.env` del backend (XAMPP usa por defecto el usuario `root` **sin contraseña**):
+
+```bash
+cd backend
+cp .env.example .env
+```
+
+Edita `backend/.env` y deja la contraseña vacía:
+
+```
+DB_USER=root
+DB_PASSWORD=
+```
+
+### Opción C — MySQL instalado localmente (vía terminal)
+
+Si prefieres usar MySQL directamente sin Docker ni XAMPP, créalo por terminal con `mysql -u root -p < src/db/schema.sql` (ver paso 3 más abajo) y edita `.env` con tus credenciales reales.
+
+## Instalación de dependencias y arranque (con cualquiera de las tres opciones)
 
 ```bash
 # 1. Clonar el repositorio
@@ -162,13 +187,15 @@ npm install
 
 # 3. Crear la base de datos
 #    - Si usaste la Opción A (Docker), ya está creada, omite este paso.
-#    - Si usas MySQL local (Opción B):
+#    - Si usaste la Opción B (XAMPP), ya la creaste desde phpMyAdmin, omite este paso.
+#    - Si usas MySQL local por terminal (Opción C):
 mysql -u root -p < src/db/schema.sql
 
 # 4. Configurar variables de entorno
 cp .env.example .env
-# si usas Docker, los valores por defecto ya funcionan
-# si usas MySQL local, edita .env con tu usuario, contraseña y JWT_SECRET
+# Docker: los valores por defecto ya funcionan
+# XAMPP: usuario root y password vacío (ver Opción B)
+# MySQL local (Opción C): edita .env con tu usuario, contraseña y JWT_SECRET
 
 # 5. Iniciar el servidor
 npm start
@@ -186,7 +213,7 @@ PORT=3000
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=tu_password
+DB_PASSWORD=rootpass123     # vacío si usas XAMPP, o tu propia contraseña si usas MySQL local
 DB_NAME=tienda_online
 
 JWT_SECRET=cambia_este_valor_por_un_secreto_seguro
