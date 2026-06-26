@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tianguis Digital — Tienda en línea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="encabezado">
+    <div class="marca">Tianguis<span>Digital</span></div>
+
+    <div class="buscador">
+      <span aria-hidden="true">🔎</span>
+      <input type="text" id="campoBusqueda" placeholder="Buscar productos…" aria-label="Buscar productos">
+    </div>
+
+    <div class="nav-acciones">
+      <span id="saludoUsuario" style="display:none; font-size:0.9rem; color: var(--color-texto-suave);"></span>
+      <button class="boton boton-fantasma" id="btnLogin">Iniciar sesión</button>
+      <button class="boton boton-fantasma" id="btnLogout" style="display:none;">Cerrar sesión</button>
+      <button class="boton-icono" id="btnAbrirCarrito" aria-label="Ver carrito">
+        🛒<span class="contador-carrito" id="contadorCarrito" style="display:none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="contenedor">
+
+    <section class="hero">
+      <div>
+        <p class="hero-cifra">Catálogo actualizado en tiempo real</p>
+        <h1>Todo lo que buscas, a un clic de tu puerta.</h1>
+        <p>Explora el catálogo, agrega a tu carrito y recibe tu pedido en casa. Tu cuenta guarda direcciones, historial y favoritos.</p>
+        <button class="boton boton-primario" onclick="document.getElementById('seccionCatalogo').scrollIntoView({behavior:'smooth'})">Ver catálogo</button>
+      </div>
+    </section>
+
+    <section id="seccionCatalogo">
+      <div class="filtros" id="filtrosCategoria">
+        <button class="chip activo" data-categoria="">Todas</button>
+        <!-- las categorías se insertan dinámicamente -->
+        <select class="select-orden" id="selectOrden">
+          <option value="">Ordenar por…</option>
+          <option value="precio_asc">Precio: menor a mayor</option>
+          <option value="precio_desc">Precio: mayor a menor</option>
+          <option value="nombre">Nombre A-Z</option>
+        </select>
+      </div>
+
+      <div class="grid-productos" id="gridProductos">
+        <!-- las tarjetas de producto se insertan dinámicamente -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= MODAL DE AUTENTICACIÓN ================= -->
+  <div class="fondo-oscurecido" id="fondoModalAuth"></div>
+  <div class="pantalla-auth" id="modalAuth" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:101;">
+    <div class="tarjeta-auth">
+      <h2 id="tituloAuth">Iniciar sesión</h2>
+      <p class="subtitulo" id="subtituloAuth">Accede a tu cuenta para continuar tu compra.</p>
+
+      <div class="mensaje-error" id="errorAuth"></div>
+      <div class="mensaje-exito" id="exitoAuth"></div>
+
+      <form id="formLogin">
+        <div class="campo">
+          <label for="loginCorreo">Correo electrónico</label>
+          <input type="email" id="loginCorreo" required autocomplete="email">
+        </div>
+        <div class="campo">
+          <label for="loginContrasena">Contraseña</label>
+          <input type="password" id="loginContrasena" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="boton boton-primario">Entrar</button>
+      </form>
+
+      <form id="formRegistro" style="display:none;">
+        <div class="campo">
+          <label for="regNombre">Nombre</label>
+          <input type="text" id="regNombre" required>
+        </div>
+        <div class="campo">
+          <label for="regApellido">Apellido</label>
+          <input type="text" id="regApellido" required>
+        </div>
+        <div class="campo">
+          <label for="regCorreo">Correo electrónico</label>
+          <input type="email" id="regCorreo" required autocomplete="email">
+        </div>
+        <div class="campo">
+          <label for="regContrasena">Contraseña (mín. 6 caracteres)</label>
+          <input type="password" id="regContrasena" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="boton boton-primario">Crear cuenta</button>
+      </form>
+
+      <p class="enlace-cambio">
+        <span id="textoCambio">¿No tienes cuenta?</span>
+        <a href="#" id="enlaceCambiarModo">Regístrate</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= PANEL DEL CARRITO ================= -->
+  <div class="fondo-oscurecido" id="fondoCarrito"></div>
+  <aside class="panel-carrito" id="panelCarrito" aria-label="Carrito de compras">
+    <div class="cabecera-panel">
+      <h3 style="margin:0;">Tu carrito</h3>
+      <button class="boton-icono" id="btnCerrarCarrito" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="lista-items" id="listaItemsCarrito">
+      <div class="estado-vacio">
+        <div class="icono-vacio">🛒</div>
+        <p>Tu carrito está vacío.<br>Agrega productos del catálogo.</p>
+      </div>
+    </div>
+
+    <div class="pie-panel">
+      <div class="fila-total">
+        <span>Total</span>
+        <span id="totalCarrito">$0.00</span>
+      </div>
+      <button class="boton boton-primario" id="btnIrCheckout" style="width:100%;">Proceder a comprar</button>
+    </div>
+  </aside>
+
+  <!-- ================= MODAL DE CHECKOUT ================= -->
+  <div class="fondo-oscurecido" id="fondoCheckout"></div>
+  <div class="pantalla-auth" id="modalCheckout" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:101;">
+    <div class="tarjeta-auth" style="max-width:460px;">
+      <h2>Finalizar compra</h2>
+      <p class="subtitulo">Indica a dónde enviamos tu pedido.</p>
+
+      <div class="mensaje-error" id="errorCheckout"></div>
+      <div class="mensaje-exito" id="exitoCheckout"></div>
+
+      <form id="formCheckout">
+        <div class="campo">
+          <label for="checkoutCalle">Calle</label>
+          <input type="text" id="checkoutCalle" required>
+        </div>
+        <div class="campo">
+          <label for="checkoutNumero">Número</label>
+          <input type="text" id="checkoutNumero">
+        </div>
+        <div class="campo">
+          <label for="checkoutColonia">Colonia</label>
+          <input type="text" id="checkoutColonia">
+        </div>
+        <div class="campo">
+          <label for="checkoutCiudad">Ciudad</label>
+          <input type="text" id="checkoutCiudad" required>
+        </div>
+        <div class="campo">
+          <label for="checkoutEstado">Estado</label>
+          <input type="text" id="checkoutEstado" required>
+        </div>
+        <div class="campo">
+          <label for="checkoutCP">Código Postal</label>
+          <input type="text" id="checkoutCP" required>
+        </div>
+        <button type="submit" class="boton boton-primario">Confirmar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

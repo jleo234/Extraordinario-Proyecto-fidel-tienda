@@ -1,0 +1,139 @@
+<svg width="1000" height="640" viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#6B5D4F" stroke-width="1.2"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="640" fill="#FFFFFF"/>
+  <text x="500" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#2B231A">Diagrama Entidad-Relación — tienda_online</text>
+
+  <!-- USUARIOS -->
+  <g>
+    <rect x="40" y="60" width="190" height="130" rx="8" fill="#FAECE7" stroke="#C1502E" stroke-width="1.3"/>
+    <rect x="40" y="60" width="190" height="26" rx="8" fill="#C1502E"/>
+    <text x="135" y="78" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">usuarios</text>
+    <text x="50" y="104" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_usuario</text>
+    <text x="50" y="120" font-family="Arial" font-size="10.5" fill="#2B231A">nombre, apellido</text>
+    <text x="50" y="136" font-family="Arial" font-size="10.5" fill="#2B231A">correo (UK)</text>
+    <text x="50" y="152" font-family="Arial" font-size="10.5" fill="#2B231A">contrasena_hash</text>
+    <text x="50" y="168" font-family="Arial" font-size="10.5" fill="#2B231A">telefono, activo</text>
+  </g>
+
+  <!-- DIRECCIONES -->
+  <g>
+    <rect x="40" y="240" width="190" height="140" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.3"/>
+    <rect x="40" y="240" width="190" height="26" rx="8" fill="#185FA5"/>
+    <text x="135" y="258" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">direcciones</text>
+    <text x="50" y="284" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_direccion</text>
+    <text x="50" y="300" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_usuario</text>
+    <text x="50" y="316" font-family="Arial" font-size="10.5" fill="#2B231A">calle, numero, colonia</text>
+    <text x="50" y="332" font-family="Arial" font-size="10.5" fill="#2B231A">ciudad, estado, CP</text>
+    <text x="50" y="348" font-family="Arial" font-size="10.5" fill="#2B231A">pais, es_predeterminada</text>
+  </g>
+
+  <!-- CATEGORIAS -->
+  <g>
+    <rect x="280" y="60" width="180" height="90" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.3"/>
+    <rect x="280" y="60" width="180" height="26" rx="8" fill="#3B6D11"/>
+    <text x="370" y="78" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">categorias</text>
+    <text x="290" y="104" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_categoria</text>
+    <text x="290" y="120" font-family="Arial" font-size="10.5" fill="#2B231A">nombre (UK)</text>
+    <text x="290" y="136" font-family="Arial" font-size="10.5" fill="#2B231A">descripcion</text>
+  </g>
+
+  <!-- PRODUCTOS -->
+  <g>
+    <rect x="280" y="190" width="180" height="140" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.3"/>
+    <rect x="280" y="190" width="180" height="26" rx="8" fill="#3B6D11"/>
+    <text x="370" y="208" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">productos</text>
+    <text x="290" y="234" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_producto</text>
+    <text x="290" y="250" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_categoria</text>
+    <text x="290" y="266" font-family="Arial" font-size="10.5" fill="#2B231A">nombre, descripcion</text>
+    <text x="290" y="282" font-family="Arial" font-size="10.5" fill="#2B231A">precio, stock</text>
+    <text x="290" y="298" font-family="Arial" font-size="10.5" fill="#2B231A">imagen_url, activo</text>
+  </g>
+
+  <!-- CARRITOS -->
+  <g>
+    <rect x="520" y="60" width="180" height="100" rx="8" fill="#FBEAF0" stroke="#993556" stroke-width="1.3"/>
+    <rect x="520" y="60" width="180" height="26" rx="8" fill="#993556"/>
+    <text x="610" y="78" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">carritos</text>
+    <text x="530" y="104" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_carrito</text>
+    <text x="530" y="120" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_usuario</text>
+    <text x="530" y="136" font-family="Arial" font-size="10.5" fill="#2B231A">fecha_creacion</text>
+    <text x="530" y="152" font-family="Arial" font-size="10.5" fill="#2B231A">estado</text>
+  </g>
+
+  <!-- CARRITO_ITEMS -->
+  <g>
+    <rect x="520" y="200" width="180" height="120" rx="8" fill="#FBEAF0" stroke="#993556" stroke-width="1.3"/>
+    <rect x="520" y="200" width="180" height="26" rx="8" fill="#993556"/>
+    <text x="610" y="218" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#FFFFFF">carrito_items</text>
+    <text x="530" y="244" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_item</text>
+    <text x="530" y="260" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_carrito</text>
+    <text x="530" y="276" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_producto</text>
+    <text x="530" y="292" font-family="Arial" font-size="10.5" fill="#2B231A">cantidad, precio_unitario</text>
+  </g>
+
+  <!-- PEDIDOS -->
+  <g>
+    <rect x="760" y="60" width="190" height="120" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.3"/>
+    <rect x="760" y="60" width="190" height="26" rx="8" fill="#854F0B"/>
+    <text x="855" y="78" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF">pedidos</text>
+    <text x="770" y="104" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_pedido</text>
+    <text x="770" y="120" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_usuario</text>
+    <text x="770" y="136" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_direccion</text>
+    <text x="770" y="152" font-family="Arial" font-size="10.5" fill="#2B231A">fecha_pedido, estado</text>
+    <text x="770" y="168" font-family="Arial" font-size="10.5" fill="#2B231A">total</text>
+  </g>
+
+  <!-- PEDIDO_ITEMS -->
+  <g>
+    <rect x="760" y="220" width="190" height="130" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.3"/>
+    <rect x="760" y="220" width="190" height="26" rx="8" fill="#854F0B"/>
+    <text x="855" y="238" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="700" fill="#FFFFFF">pedido_items</text>
+    <text x="770" y="264" font-family="Arial" font-size="10.5" fill="#2B231A">PK id_pedido_item</text>
+    <text x="770" y="280" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_pedido</text>
+    <text x="770" y="296" font-family="Arial" font-size="10.5" fill="#2B231A">FK id_producto</text>
+    <text x="770" y="312" font-family="Arial" font-size="10.5" fill="#2B231A">cantidad, precio_unitario, subtotal</text>
+  </g>
+
+  <!-- relaciones -->
+  <line x1="135" y1="190" x2="135" y2="240" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="142" y="218" font-family="Arial" font-size="10" fill="#6B5D4F">1:N</text>
+
+  <line x1="230" y1="115" x2="520" y2="100" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="370" y="98" font-family="Arial" font-size="10" fill="#6B5D4F">1:N (carritos)</text>
+
+  <line x1="230" y1="150" x2="760" y2="110" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="500" y="135" font-family="Arial" font-size="10" fill="#6B5D4F">1:N (pedidos)</text>
+
+  <line x1="230" y1="300" x2="760" y2="280" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="450" y="305" font-family="Arial" font-size="10" fill="#6B5D4F">1:N (direcciones)</text>
+
+  <line x1="460" y1="100" x2="280" y2="100" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)" transform="translate(0,0)"/>
+  <line x1="460" y1="120" x2="460" y2="220" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="468" y="170" font-family="Arial" font-size="10" fill="#6B5D4F">1:N</text>
+
+  <line x1="610" y1="160" x2="610" y2="200" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="617" y="184" font-family="Arial" font-size="10" fill="#6B5D4F">1:N</text>
+
+  <line x1="700" y1="260" x2="460" y2="270" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="580" y="262" font-family="Arial" font-size="10" fill="#6B5D4F">N:1</text>
+
+  <line x1="855" y1="180" x2="855" y2="220" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="862" y="204" font-family="Arial" font-size="10" fill="#6B5D4F">1:N</text>
+
+  <line x1="760" y1="280" x2="460" y2="270" stroke="#6B5D4F" stroke-width="1.2" marker-end="url(#arrow2)"/>
+  <text x="600" y="295" font-family="Arial" font-size="10" fill="#6B5D4F">N:1</text>
+
+  <!-- Leyenda -->
+  <rect x="40" y="420" width="920" height="170" rx="10" fill="#FBF4E9" stroke="#E6D9C3"/>
+  <text x="60" y="448" font-family="Arial" font-size="13" font-weight="700" fill="#2B231A">Cardinalidades del modelo</text>
+  <text x="60" y="472" font-family="Arial" font-size="11" fill="#2B231A">• usuarios (1) — direcciones (N): un usuario puede registrar varias direcciones de envío.</text>
+  <text x="60" y="492" font-family="Arial" font-size="11" fill="#2B231A">• usuarios (1) — carritos (N): un usuario puede tener varios carritos a lo largo del tiempo, pero solo uno activo.</text>
+  <text x="60" y="512" font-family="Arial" font-size="11" fill="#2B231A">• usuarios (1) — pedidos (N): un usuario puede generar muchos pedidos.</text>
+  <text x="60" y="532" font-family="Arial" font-size="11" fill="#2B231A">• categorias (1) — productos (N): cada producto pertenece a una sola categoría.</text>
+  <text x="60" y="552" font-family="Arial" font-size="11" fill="#2B231A">• carritos (1) — carrito_items (N) y productos (1) — carrito_items (N): relación N:M entre carritos y productos.</text>
+  <text x="60" y="572" font-family="Arial" font-size="11" fill="#2B231A">• pedidos (1) — pedido_items (N) y productos (1) — pedido_items (N): relación N:M entre pedidos y productos (detalle de compra).</text>
+</svg>

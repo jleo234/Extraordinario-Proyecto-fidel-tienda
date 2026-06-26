@@ -1,0 +1,27 @@
+# Dependencias
+node_modules/
+backend/node_modules/
+
+# Variables de entorno (contienen credenciales — nunca subir a Git)
+.env
+backend/.env
+
+# Logs
+npm-debug.log*
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Archivos temporales de compilación / build
+dist/
+build/
+
+# Archivos de mermaid-cli / puppeteer (si se regeneran diagramas)
+puppeteer-config.json

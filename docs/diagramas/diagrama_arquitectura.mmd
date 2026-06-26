@@ -1,0 +1,21 @@
+flowchart TB
+    subgraph Cliente["CAPA DE PRESENTACIÓN"]
+        A[Navegador Web<br/>HTML + CSS + JavaScript]
+    end
+
+    subgraph Servidor["CAPA DE LÓGICA DE NEGOCIO — Node.js / Express"]
+        B[Rutas<br/>auth · productos · carrito · pedidos · direcciones]
+        C[Middleware<br/>Autenticación JWT]
+        D[Controladores<br/>Reglas de negocio]
+    end
+
+    subgraph Datos["CAPA DE DATOS"]
+        E[(MySQL<br/>tienda_online)]
+    end
+
+    A -- "Peticiones HTTP / JSON (fetch)" --> B
+    B --> C
+    C --> D
+    D -- "Consultas SQL (mysql2)" --> E
+    E -- "Resultados" --> D
+    D -- "Respuestas JSON" --> A

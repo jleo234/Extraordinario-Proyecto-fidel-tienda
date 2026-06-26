@@ -1,0 +1,30 @@
+flowchart LR
+    Cliente(("Cliente"))
+
+    subgraph Sistema["Sistema de Tienda en Línea"]
+        CU1[Registrarse]
+        CU2[Iniciar sesión]
+        CU3[Consultar catálogo de productos]
+        CU4[Filtrar / ordenar productos]
+        CU5[Agregar producto al carrito]
+        CU6[Modificar cantidad en el carrito]
+        CU7[Eliminar producto del carrito]
+        CU8[Registrar dirección de envío]
+        CU9[Confirmar compra]
+        CU10[Consultar historial de pedidos]
+    end
+
+    Cliente --- CU1
+    Cliente --- CU2
+    Cliente --- CU3
+    Cliente --- CU4
+    Cliente --- CU5
+    Cliente --- CU6
+    Cliente --- CU7
+    Cliente --- CU8
+    Cliente --- CU9
+    Cliente --- CU10
+
+    CU5 -.->|requiere| CU2
+    CU9 -.->|requiere| CU8
+    CU9 -.->|incluye| CU5

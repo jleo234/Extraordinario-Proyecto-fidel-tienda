@@ -1,0 +1,85 @@
+erDiagram
+    USUARIOS ||--o{ DIRECCIONES : "registra"
+    USUARIOS ||--o{ CARRITOS : "posee"
+    USUARIOS ||--o{ PEDIDOS : "realiza"
+    CATEGORIAS ||--o{ PRODUCTOS : "clasifica"
+    CARRITOS ||--o{ CARRITO_ITEMS : "contiene"
+    PRODUCTOS ||--o{ CARRITO_ITEMS : "se agrega en"
+    PEDIDOS ||--o{ PEDIDO_ITEMS : "incluye"
+    PRODUCTOS ||--o{ PEDIDO_ITEMS : "se compra en"
+    DIRECCIONES ||--o{ PEDIDOS : "recibe"
+
+    USUARIOS {
+        int id_usuario PK
+        string nombre
+        string apellido
+        string correo UK
+        string contrasena_hash
+        string telefono
+        datetime fecha_registro
+        boolean activo
+    }
+
+    DIRECCIONES {
+        int id_direccion PK
+        int id_usuario FK
+        string calle
+        string numero
+        string colonia
+        string ciudad
+        string estado
+        string codigo_postal
+        string pais
+        boolean es_predeterminada
+    }
+
+    CATEGORIAS {
+        int id_categoria PK
+        string nombre UK
+        string descripcion
+    }
+
+    PRODUCTOS {
+        int id_producto PK
+        int id_categoria FK
+        string nombre
+        text descripcion
+        decimal precio
+        int stock
+        string imagen_url
+        datetime fecha_creacion
+        boolean activo
+    }
+
+    CARRITOS {
+        int id_carrito PK
+        int id_usuario FK
+        datetime fecha_creacion
+        string estado
+    }
+
+    CARRITO_ITEMS {
+        int id_item PK
+        int id_carrito FK
+        int id_producto FK
+        int cantidad
+        decimal precio_unitario
+    }
+
+    PEDIDOS {
+        int id_pedido PK
+        int id_usuario FK
+        int id_direccion FK
+        datetime fecha_pedido
+        string estado
+        decimal total
+    }
+
+    PEDIDO_ITEMS {
+        int id_pedido_item PK
+        int id_pedido FK
+        int id_producto FK
+        int cantidad
+        decimal precio_unitario
+        decimal subtotal
+    }
