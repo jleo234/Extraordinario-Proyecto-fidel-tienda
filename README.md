@@ -115,6 +115,7 @@ El diseño se desarrolló primero como código funcional en lugar de un mockup e
 6. Compartir el archivo desde **Share → Copy link**, o exportarlo con **Archivo → Guardar como .fig**.
 
 Este enfoque (código real → Figma) evita rehacer manualmente el diseño y garantiza que el archivo de Figma sea idéntico a lo que el sistema realmente muestra.
+🔗 **Enlace al diseño en Figma:** [Ver diseño completo](https://www.figma.com/design/wlkUF7FSqKiTBzn8DLFSqR/Untitled?t=pnuDqXXdapB9NtVp-1)
 
 ## Estructura del proyecto
 
