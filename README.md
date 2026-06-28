@@ -98,6 +98,25 @@ Arquitectura de tres capas:
 
 Prototipo funcional construido directamente en HTML/CSS/JS (carpeta `frontend/public/`), con identidad visual propia ("Tianguis Digital"): paleta cálida (arena, terracota, verde aguacate), tipografías Fraunces + Inter + JetBrains Mono, totalmente responsivo.
 
+### Captura del prototipo en ejecución
+
+![Catálogo de Tianguis Digital](./docs/capturas/captura_catalogo.png)
+
+*Vista del catálogo con sesión iniciada, buscador, filtros por categoría y orden de productos.*
+
+### Diseño de interfaz (Figma)
+
+El diseño se desarrolló primero como código funcional en lugar de un mockup estático, para poder validar la experiencia real de uso. Para contar también con el archivo de diseño en Figma (tal como lo solicita el formato de entrega), se importó la interfaz ya construida usando el plugin de Figma **html.to.design**, en lugar de rediseñar todo desde cero:
+
+1. Crear una cuenta gratuita en [figma.com](https://figma.com) y abrir un archivo nuevo.
+2. En el menú **Plugins → Browse plugins in Community**, buscar **"html.to.design"** e instalarlo.
+3. Con el servidor del proyecto corriendo (`http://localhost:3000`), ejecutar el plugin y pegar esa URL.
+4. El plugin importa la página como capas editables de Figma (textos, botones, colores, layout), organizadas en un frame.
+5. Repetir el proceso para cada pantalla relevante (catálogo, login/registro, carrito, checkout), nombrando cada frame.
+6. Compartir el archivo desde **Share → Copy link**, o exportarlo con **Archivo → Guardar como .fig**.
+
+Este enfoque (código real → Figma) evita rehacer manualmente el diseño y garantiza que el archivo de Figma sea idéntico a lo que el sistema realmente muestra.
+
 ## Estructura del proyecto
 
 ```
