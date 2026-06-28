@@ -100,8 +100,7 @@ Prototipo funcional construido directamente en HTML/CSS/JS (carpeta `frontend/pu
 
 ### Captura del prototipo en ejecución
 
-![Catálogo de Tianguis Digital](./docs/capturas/captura_catalogo.png)
-
+![Catálogo de Tianguis Digital](./docs/diagramas/captura_catalogo.png)
 *Vista del catálogo con sesión iniciada, buscador, filtros por categoría y orden de productos.*
 
 ### Diseño de interfaz (Figma)
