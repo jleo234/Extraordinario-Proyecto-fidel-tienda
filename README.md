@@ -102,6 +102,11 @@ Prototipo funcional construido directamente en HTML/CSS/JS (carpeta `frontend/pu
 
 ![Catálogo de Tianguis Digital](./docs/diagramas/captura_catalogo.png)
 *Vista del catálogo con sesión iniciada, buscador, filtros por categoría y orden de productos.*
+Flujo de compra completo, probado de extremo a extremo: carrito vacío, productos agregados con cálculo automático del total, y pedido confirmado tras registrar la dirección de envío.
+
+| Carrito vacío | Carrito con productos | Pedido confirmado |
+|---|---|---|
+| ![Carrito vacío](./docs/diagramas/carrito_vacio.png) | ![Carrito con productos](./docs/diagramas/carrito_con_productos.png) | ![Checkout confirmado](./docs/diagramas/checkout_confirmado.png) |
 
 ### Diseño de interfaz (Figma)
 
